@@ -270,7 +270,8 @@
         .publication-media {
             width: 200px;
             height: 125px;
-            object-fit: cover;
+            object-fit: contain; /* MODIFIED: Changed 'cover' to 'contain' to show the full image */
+            background-color: var(--section-bg-color); /* ADDED: A background for letterboxed images */
             border-radius: 8px;
             flex-shrink: 0;
         }
