@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <base href="." target="_blank">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: Change this to your name -->
+    <title>Weihao Yu's Homepage</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <style>
+        /* 
+        ==========================================================================
+        CSS Variables - The Control Panel for Your Homepage's Look
+        TODO: You can easily change the entire site's color scheme by editing the values below.
+        ==========================================================================
+        */
+        :root {
+            --primary-color: #005A9C; /* A professional blue */
+            --primary-hover-color: #003D6B;
+            --text-color: #333333;
+            --link-color: #005A9C;
+            --link-hover-color: #003D6B;
+            --background-color: #FFFFFF;
+            --section-bg-color: #F8F9FA;
+            --border-color: #DEE2E6;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        /* 
+        ==========================================================================
+        General Body and Typography Styles
+        ==========================================================================
+        */
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: var(--section-bg-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+            text-decoration: underline;
+        }
+        
+        ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 
+        ==========================================================================
+        Profile Section
+        ==========================================================================
+        */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .profile-affiliation {
+            font-size: 1.2rem;
+            margin: 0.25rem 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .profile-links a:hover {
+            background-color: var(--border-color);
+            text-decoration: none;
+        }
+        
+        .profile-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* 
+        ==========================================================================
+        Scrollable Lists (for News & Talks)
+        ==========================================================================
+        */
+        .scrollable-list {
+            height: 200px;
+            overflow-y: auto;
+            padding-right: 15px;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--background-color);
+        }
+
+        .scrollable-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scrollable-list::-webkit-scrollbar-track {
+            background: var(--section-bg-color);
+            border-radius: 4px;
+        }
+
+        .scrollable-list::-webkit-scrollbar-thumb {
+            background: #aaa;
+            border-radius: 4px;
+        }
+
+        .scrollable-list::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* 
+        ==========================================================================
+        Publications Section
+        ==========================================================================
+        */
+        .publication-filters {
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            border-radius: 20px; /* Pill shape */
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--border-color);
+            border-color: var(--primary-hover-color);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .publication-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--background-color);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .publication-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .publication-item.hidden {
+            display: none;
+        }
+        
+        .publication-category-header {
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .publication-category-header.hidden {
+            display: none;
+        }
+
+        .publication-media {
+            width: 200px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .publication-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .publication-authors {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            font-style: italic;
+        }
+
+        .publication-venue {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-highlights {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .publication-links a {
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+        
+        /* 
+        ==========================================================================
+        Footer
+        ==========================================================================
+        */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        /* 
+        ==========================================================================
+        Responsive Design
+        ==========================================================================
+        */
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-links {
+                justify-content: center;
+            }
+            .publication-item {
+                flex-direction: column;
+            }
+            .publication-media {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- ================================================================== -->
+        <!-- Profile Section -->
+        <!-- ================================================================== -->
+        <section>
+            <div class="profile">
+                <!-- TODO: Replace with the path to your photo -->
+                <img class="profile-image" src="https://via.placeholder.com/150" alt="Your Name">
+                <div class="profile-info">
+                    <!-- TODO: Replace with your name -->
+                    <h1 class="profile-name">Your Name</h1>
+                    <!-- TODO: Replace with your title and affiliation -->
+                    <h3 class="profile-affiliation">PhD Candidate at University of Excellence</h3>
+                    <div class="profile-links">
+                        <!-- TODO: Update your email address -->
+                        <a href="mailto:your.email@example.com">
+                            <svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"></path></svg>
+                            Email
+                        </a>
+                        <!-- TODO: Update link to your CV PDF -->
+                        <a href="#">
+                            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"></path></svg>
+                            CV
+                        </a>
+                        <!-- TODO: Update link to your Google Scholar profile -->
+                        <a href="#">
+                            <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10c1.381 0 2.5 1.119 2.5 2.5s-1.119 2.5-2.5 2.5s-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5zM12 15c3.313 0 6 2.687 6 6H6c0-3.313 2.687-6 6-6z"></path></svg>
+                            Google Scholar
+                        </a>
+                        <!-- TODO: Update link to your GitHub profile -->
+                        <a href="#">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.577.688.48C19.135 20.165 22 16.418 22 12A10 10 0 0012 2z"></path></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- About Me Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>About Me</h2>
+            <div>
+                <!-- TODO: Write a paragraph about yourself here. -->
+                <p>
+                    I am a [Your Title] at [Your University/Company]. My research focuses on the intersection of [Your Field 1], [Your Field 2], and [Your Field 3]. I am passionate about developing novel algorithms and systems that can solve real-world problems.
+                    <strong>I am currently seeking [internship/full-time] opportunities starting [Date]. Please feel free to reach out!</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Recent News Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>Recent News</h2>
+            <div class="scrollable-list">
+                <ul>
+                    <!-- TODO: Add your news items here. You can copy/paste the <li> tag. -->
+                    <li><strong>[Month Year]</strong>: Our paper, "[Paper Title]", was accepted to [Conference Name]!</li>
+                    <li><strong>[Month Year]</strong>: I will be serving as a reviewer for [Conference/Journal Name].</li>
+                    <li><strong>[Month Year]</strong>: Excited to start my internship at [Company Name]!</li>
+                    <li><strong>[Month Year]</strong>: Successfully defended my thesis proposal.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Research Interests Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>Research Interests</h2>
+            <!-- TODO: Replace with an image or diagram of your research. -->
+            <img src="https://via.placeholder.com/800x250?text=Your+Cool+Research+Overview+Diagram" alt="Research Overview" style="width:100%; border-radius: 8px; margin-bottom: 1rem;">
+            <!-- TODO: Write a paragraph describing your research interests. -->
+            <p>
+                My research aims to [Your main goal]. I am particularly interested in [Specific Interest 1], [Specific Interest 2], and [Specific Interest 3]. My work often involves [Methodology/Approach] to build [Type of systems/models] that are efficient, robust, and scalable.
+            </p>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Publications Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>Selected Publications</h2>
+            <div style="font-size: 0.9rem; margin-bottom: 1rem;">* denotes equal contribution. Full list on <a href="#">Google Scholar</a>.</div>
+
+            <!-- Filter Buttons -->
+            <div class="publication-filters">
+                <button class="filter-btn active" onclick="filterPublications('all')">All</button>
+                <!-- TODO: Change these categories to fit your research areas. -->
+                <button class="filter-btn" onclick="filterPublications('category-a')">Category A</button>
+                <button class="filter-btn" onclick="filterPublications('category-b')">Category B</button>
+                <button class="filter-btn" onclick="filterPublications('category-c')">Category C</button>
+            </div>
+
+            <div id="publications-list">
+                <!-- 
+                ==================================================================
+                PUBLICATION ITEM TEMPLATE
+                TODO: Copy this entire 'publication-item' div for each of your papers.
+                - Change the class to match your category (e.g., "category-a").
+                - Update the image/video src.
+                - Fill in the title, authors, venue, and links.
+                ==================================================================
+                -->
+                <h3 class="publication-category-header category-a">Category A</h3>
+                <div class="publication-item category-a">
+                    <!-- TODO: Replace with your publication's teaser image or video -->
+                    <img class="publication-media" src="https://via.placeholder.com/200x125?text=Paper+Teaser" alt="Teaser for Awesome Paper">
+                    <div class="publication-info">
+                        <div class="publication-title">An Awesome Paper About a Great Topic</div>
+                        <div class="publication-authors"><strong>Your Name*</strong>, Co-author One, Co-author Two</div>
+                        <div class="publication-venue">
+                            Conference on Cool Things (CCT) 2025 <span class="publication-highlights">(Oral Presentation)</span>
+                        </div>
+                        <div class="publication-links">
+                            <a href="#">Paper</a>
+                            <a href="#">Project Page</a>
+                            <a href="#">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="publication-category-header category-b">Category B</h3>
+                <div class="publication-item category-b">
+                     <!-- TODO: You can also use a video! -->
+                    <video class="publication-media" src="path/to/your/video.mp4" playsinline autoplay loop muted></video>
+                    <div class="publication-info">
+                        <div class="publication-title">Another Great Paper on a Different Topic</div>
+                        <div class="publication-authors">Co-author One, <strong>Your Name</strong>, Co-author Three</div>
+                        <div class="publication-venue">
+                            Journal of Important Research (JIR) 2024
+                        </div>
+                        <div class="publication-links">
+                            <a href="#">Paper</a>
+                            <a href="#">Project Page</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="publication-category-header category-c">Category C</h3>
+                <!-- Add more publications for other categories here -->
+
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- Experience Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>Experience</h2>
+            <ul>
+                <!-- TODO: Add your experience here -->
+                <li><strong>[Company/University]</strong> - [Your Role] ([Start Year] - [End Year/Present])</li>
+                <li><strong>[Company/University]</strong> - [Your Role] ([Start Year] - [End Year])</li>
+            </ul>
+        </section>
+        
+        <!-- ================================================================== -->
+        <!-- Professional Services Section -->
+        <!-- ================================================================== -->
+        <section>
+            <h2>Professional Services</h2>
+            <ul>
+                 <!-- TODO: Add your service roles here -->
+                <li><strong>Area Chair:</strong> [Conference Name]</li>
+                <li><strong>Journal Reviewer:</strong> [Journal 1], [Journal 2]</li>
+                <li><strong>Conference Reviewer:</strong> [Conference 1], [Conference 2], [Conference 3]</li>
+            </ul>
+        </section>
+
+        <footer>
+            <!-- TODO: Update the date -->
+            <p>Last updated on June, 2025</p>
+            <p>Template adapted from the websites of Zhiwen Fan and Yifan Jiang.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Filtering Publications -->
+    <script>
+        function filterPublications(category) {
+            // Update button active state
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('onclick') === `filterPublications('${category}')`) {
+                    button.classList.add('active');
+                }
+            });
+
+            const items = document.querySelectorAll('.publication-item');
+            const headers = document.querySelectorAll('.publication-category-header');
+            let visibleCategories = new Set();
+
+            // Filter items
+            items.forEach(item => {
+                const itemCategoryClass = Array.from(item.classList).find(cls => cls.startsWith('category-'));
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                    if (itemCategoryClass) {
+                        visibleCategories.add(itemCategoryClass);
+                    }
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Show/hide headers
+            headers.forEach(header => {
+                const headerCategoryClass = Array.from(header.classList).find(cls => cls.startsWith('category-'));
+                if (category === 'all' || visibleCategories.has(headerCategoryClass)) {
+                    header.classList.remove('hidden');
+                } else {
+                    header.classList.add('hidden');
+                }
+            });
+        }
+
+        // Set the initial state to show all publications when the page loads.
+        document.addEventListener('DOMContentLoaded', () => {
+            filterPublications('all');
+        });
+    </script>
+
+</body>
+</html>
