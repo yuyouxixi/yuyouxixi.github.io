@@ -417,7 +417,7 @@
             </div>
         </section>
 
-        <!-- ================================================================== -->
+       <!-- ================================================================== -->
         <!-- Publications Section -->
         <!-- ================================================================== -->
         <section>
@@ -428,15 +428,14 @@
                 <!-- 
                 ==================================================================
                 PUBLICATION ITEM TEMPLATE
-                TODO: Copy this entire 'publication-item' div for each of your papers.
-                - Change the class to match your category (e.g., "category-a").
-                - Update the image/video src.
-                - Fill in the title, authors, venue, and links.
+                - Each publication is wrapped in its own 'publication-item' div.
+                - This ensures each paper appears as a separate row.
                 ==================================================================
                 -->
+
+                <!-- Publication 1 -->
                 <div class="publication-item category-a">
-                    <!-- TODO: Replace with your publication's teaser image or video -->
-                    <img class="publication-media" src="./Homepage_files/x2gaussian.jpg" alt="Teaser for Awesome Paper">
+                    <img class="publication-media" src="./Homepage_files/x2gaussian.jpg" alt="Teaser for X2-Gaussian paper">
                     <div class="publication-info">
                         <div class="publication-title">X<sup>2</sup>-Gaussian: 4D Radiative Gaussian Splatting for Continuous-time Tomographic Reconstruction</div>
                         <div class="publication-authors"><strong>Weihao Yu*</strong>, Yuanhao Cai, Ruyi Zha, Zhiwen Fan, Chenxin Li, Yixuan Yuan</div>
@@ -449,8 +448,11 @@
                             <a href="https://github.com/yuyouxixi/x2-gaussian">Code</a>
                         </div>
                     </div>
+                </div>
 
-                    <img class="publication-media" src="./Homepage_files/gaussianreg.jpg" alt="Teaser for Awesome Paper">
+                <!-- Publication 2 -->
+                <div class="publication-item category-a">
+                    <img class="publication-media" src="./Homepage_files/gaussianreg.jpg" alt="Teaser for GaussianReg paper">
                     <div class="publication-info">
                         <div class="publication-title">GaussianReg: Rapid 2D/3D Registration for Emergency Surgery via Explicit 3D Modeling with Gaussian Primitives</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Xiaoqing Guo, Xinyu Liu, Yifan Liu, Hao Zheng, Yawen Huang, Yixuan Yuan</div>
@@ -463,7 +465,6 @@
                             <a href="#">Code</a>
                         </div>
                     </div>
-
                 </div>
 
             </div>
