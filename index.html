@@ -22,9 +22,10 @@
         ==========================================================================
         */
         :root {
-            --primary-color: #005A9C; /* A professional blue */
+            --primary-color: #005A9C;
             --primary-hover-color: #003D6B;
             --text-color: #333333;
+            --text-color-light: #555555;
             --link-color: #005A9C;
             --link-hover-color: #003D6B;
             --background-color: #FFFFFF;
@@ -32,6 +33,20 @@
             --border-color: #DEE2E6;
             --shadow-color: rgba(0, 0, 0, 0.08);
             --font-main: 'Inter', sans-serif;
+        }
+
+        /* Dark Mode Color Palette */
+        :root[data-theme='dark'] {
+            --primary-color: #4dabf7;
+            --primary-hover-color: #74c0fc;
+            --text-color: #E0E0E0;
+            --text-color-light: #adb5bd;
+            --link-color: #4dabf7;
+            --link-hover-color: #74c0fc;
+            --background-color: #121212;
+            --section-bg-color: #1E1E1E;
+            --border-color: #444444;
+            --shadow-color: rgba(255, 255, 255, 0.08);
         }
 
         /* 
@@ -46,6 +61,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -54,23 +70,31 @@
             padding: 20px;
         }
 
+        /* This is the new style for sections to remove the boxes */
         section {
             margin-bottom: 2.5rem;
-            padding: 1.5rem;
-            background-color: var(--section-bg-color);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color); /* A subtle separator */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         section:last-of-type {
             margin-bottom: 0;
+            border-bottom: none; /* No border for the last section */
         }
 
         h2 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
@@ -128,6 +152,14 @@
             flex: 1;
         }
 
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
         .profile-name {
             font-size: 2.5rem;
             font-weight: 700;
@@ -138,6 +170,7 @@
             font-size: 1.2rem;
             margin: 0.25rem 0 1rem 0;
             font-weight: 500;
+            color: var(--text-color-light);
         }
 
         .profile-links {
@@ -154,11 +187,15 @@
             font-weight: 500;
             padding: 8px 12px;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            background-color: var(--section-bg-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .profile-links a:hover {
-            background-color: var(--border-color);
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
             text-decoration: none;
         }
         
@@ -176,11 +213,10 @@
         .scrollable-list {
             height: 200px;
             overflow-y: auto;
-            padding-right: 15px;
             border: 1px solid var(--border-color);
             padding: 15px;
             border-radius: 8px;
-            background-color: var(--background-color);
+            background-color: var(--section-bg-color);
         }
 
         .scrollable-list::-webkit-scrollbar {
@@ -188,7 +224,7 @@
         }
 
         .scrollable-list::-webkit-scrollbar-track {
-            background: var(--section-bg-color);
+            background: transparent;
             border-radius: 4px;
         }
 
@@ -206,44 +242,13 @@
         Publications Section
         ==========================================================================
         */
-        .publication-filters {
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 8px 16px;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-            background-color: var(--background-color);
-            border-radius: 20px; /* Pill shape */
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover {
-            background-color: var(--border-color);
-            border-color: var(--primary-hover-color);
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
         .publication-item {
             display: flex;
             gap: 1.5rem;
             margin-bottom: 2rem;
             padding: 1rem;
             border-radius: 8px;
-            background-color: var(--background-color);
-            border: 1px solid var(--border-color);
+            /* Removed background and border for a cleaner look */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
@@ -252,27 +257,13 @@
             box-shadow: 0 6px 20px var(--shadow-color);
         }
 
-        .publication-item.hidden {
-            display: none;
-        }
-        
-        .publication-category-header {
-            display: block;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .publication-category-header.hidden {
-            display: none;
-        }
-
         .publication-media {
             width: 200px;
             height: 125px;
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
+            border: 1px solid var(--border-color);
         }
 
         .publication-info {
@@ -289,7 +280,7 @@
         .publication-authors {
             font-size: 0.9rem;
             margin-bottom: 0.25rem;
-            font-style: italic;
+            color: var(--text-color-light);
         }
 
         .publication-venue {
@@ -321,6 +312,55 @@
         
         /* 
         ==========================================================================
+        NEW: Cool Features - Back to Top Button & Dark Mode Toggle
+        ==========================================================================
+        */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+            z-index: 1000;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            background-color: var(--primary-hover-color);
+        }
+
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            background-color: var(--section-bg-color);
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .theme-switcher-icon {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-color);
+        }
+
+        /* 
+        ==========================================================================
         Responsive Design
         ==========================================================================
         */
@@ -328,6 +368,10 @@
             .profile {
                 flex-direction: column;
                 text-align: center;
+            }
+            .profile-header {
+                flex-direction: column;
+                gap: 1.5rem;
             }
             .profile-links {
                 justify-content: center;
@@ -352,10 +396,17 @@
         <section>
             <div class="profile">
                 <!-- TODO: Replace with the path to your photo -->
-                <img class="profile-image" src="./Homepage_files/WeihaoYu_v2.jpg" alt="Your Name">
+                <img class="profile-image" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/WeihaoYu_v2.jpg" alt="Weihao Yu">
                 <div class="profile-info">
-                    <!-- TODO: Replace with your name -->
-                    <h1 class="profile-name">Weihao Yu 喻伟豪</h1>
+                    <div class="profile-header">
+                        <!-- TODO: Replace with your name -->
+                        <h1 class="profile-name">Weihao Yu 喻伟豪</h1>
+                        <!-- NEW: Dark Mode Toggle -->
+                        <div class="theme-switcher" id="theme-toggle" title="Toggle dark mode">
+                            <svg class="theme-switcher-icon" id="theme-icon-sun" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3zm0-7c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1s-1-.45-1-1V3c0-.55.45-1 1-1zm0 18c.55 0 1 .45 1 1v2c0 .55-.45 1-1 1s-1-.45-1-1v-2c0-.55.45-1 1-1zm-7-11H3c-.55 0-1 .45-1 1s.45 1 1 1h2c.55 0 1-.45 1-1s-.45-1-1-1zm18 0h-2c-.55 0-1 .45-1 1s.45 1 1 1h2c.55 0 1-.45 1-1s-.45-1-1-1zM5.64 5.64c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41L5.64 5.64zm12.72 12.72c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41l1.41 1.41c.39.39 1.02.39 1.41 0s.39-1.02 0-1.41l-1.41-1.41zM5.64 18.36l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0zm12.72-12.72l1.41-1.41c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0l-1.41 1.41c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0z"></path></svg>
+                            <svg class="theme-switcher-icon" id="theme-icon-moon" style="display: none;" viewBox="0 0 24 24"><path d="M9.37 5.51c.47-.23.81-.69.81-1.22C10.18 3.5 9.68 3 9 3c-.46 0-.88.26-1.11.65C4.2 4.73 2 7.95 2 11.5 2 16.74 6.26 21 11.5 21c3.55 0 6.77-2.2 7.85-5.85.23-.47.69-.81 1.22-.81.79 0 1.32.73 1.09 1.48C20.38 18.98 16.28 22 11.5 22 5.15 22 0 16.85 0 10.5 0 7.25 1.84 4.43 4.63 2.51c.46-.31 1.04-.45 1.6-.45.69 0 1.3.36 1.65.92.2.33.31.72.31 1.12 0 .5-.17.95-.48 1.31l-.01.02z"></path></svg>
+                        </div>
+                    </div>
                     <!-- TODO: Replace with your title and affiliation -->
                     <h3 class="profile-affiliation">Ph.D. student at CUHK</h3>
                     <div class="profile-links">
@@ -436,17 +487,9 @@
             <div style="font-size: 0.9rem; margin-bottom: 1rem;">* denotes equal contribution. Full list on <a href="https://scholar.google.com/citations?user=fCzlLE4AAAAJ&hl=zh-CN">Google Scholar</a>.</div>
 
             <div id="publications-list">
-                <!-- 
-                ==================================================================
-                PUBLICATION ITEM TEMPLATE
-                - Each publication is wrapped in its own 'publication-item' div.
-                - This ensures each paper appears as a separate row.
-                ==================================================================
-                -->
-
                 <!-- Publication 1 -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/x2gaussian.jpg" alt="Teaser for X2-Gaussian paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/x2gaussian.jpg" alt="Teaser for X2-Gaussian paper">
                     <div class="publication-info">
                         <div class="publication-title">X<sup>2</sup>-Gaussian: 4D Radiative Gaussian Splatting for Continuous-time Tomographic Reconstruction</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Yuanhao Cai, Ruyi Zha, Zhiwen Fan, Chenxin Li, Yixuan Yuan</div>
@@ -462,8 +505,8 @@
                 </div>
 
                 <!-- Publication 2 -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/gaussianreg.jpg" alt="Teaser for GaussianReg paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/gaussianreg.jpg" alt="Teaser for GaussianReg paper">
                     <div class="publication-info">
                         <div class="publication-title">GaussianReg: Rapid 2D/3D Registration for Emergency Surgery via Explicit 3D Modeling with Gaussian Primitives</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Xiaoqing Guo, Xinyu Liu, Yifan Liu, Hao Zheng, Yawen Huang, Yixuan Yuan</div>
@@ -479,8 +522,8 @@
                 </div>
 
                 <!-- Publication -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/geot.jpg" alt="Teaser for GeoT paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/geot.jpg" alt="Teaser for GeoT paper">
                     <div class="publication-info">
                         <div class="publication-title">GeoT: Geometry-guided Instance-dependent Transition Matrix for Semi-supervised Tooth Point Cloud Segmentation</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Xiaoqing Guo, Chenxin Li, Yifan Liu, Yixuan Yuan</div>
@@ -495,8 +538,8 @@
                 </div>
 
                 <!-- Publication -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/airwayformer.jpg" alt="Teaser for AirwayFormer paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/airwayformer.jpg" alt="Teaser for AirwayFormer paper">
                     <div class="publication-info">
                         <div class="publication-title">AirwayFormer: Structure-Aware Boundary-Adaptive Transformers for Airway Anatomical Labeling</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>*, Hao Zheng*, Yun Gu, Fangfang Xie, Jiayuan Sun, Jie Yang</div>
@@ -511,8 +554,8 @@
                 </div>
 
                 <!-- Publication -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/tnn.jpg" alt="Teaser for TNN paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/tnn.jpg" alt="Teaser for TNN paper">
                     <div class="publication-info">
                         <div class="publication-title">TNN: Tree neural network for airway anatomical labeling</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>*, Hao Zheng*, Yun Gu, Fangfang Xie, Jie Yang, Jiayuan Sun, Guang-Zhong Yang</div>
@@ -527,8 +570,8 @@
                 </div>
 
                 <!-- Publication -->
-                <div class="publication-item category-a">
-                    <img class="publication-media" src="./Homepage_files/break.jpg" alt="Teaser for Break paper">
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/break.jpg" alt="Teaser for Break paper">
                     <div class="publication-info">
                         <div class="publication-title">Break: Bronchi reconstruction by geodesic transformation and skeleton embedding</div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Hao Zheng, Minghui Zhang, Hanxiao Zhang, Jiayuan Sun, Jie Yang</div>
@@ -541,8 +584,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
@@ -560,66 +601,111 @@
         </section>
         
         <!-- ================================================================== -->
-        <!-- Professional Services Section -->
+        <!-- Professional Services Section (Restored) -->
         <!-- ================================================================== -->
-        <!-- <section> -->
-            <!-- <h2>Professional Services</h2> -->
-            <!-- <ul> -->
+        <section>
+            <h2>Professional Services</h2>
+            <ul>
                  <!-- TODO: Add your service roles here -->
-                <!-- <li><strong>Journal Reviewer:</strong> TMI, JBHI</li> -->
-                <!-- <li><strong>Conference Reviewer:</strong> NeurIPS, IROS, MICCAI</li> -->
-            <!-- </ul> -->
-        <!-- </section> -->
+                <li><strong>Journal Reviewer:</strong> TMI, JBHI</li>
+                <li><strong>Conference Reviewer:</strong> NeurIPS, IROS, MICCAI</li>
+            </ul>
+        </section>
 
         <footer>
             <!-- TODO: Update the date -->
             <p>Last updated on June, 2025</p>
         </footer>
     </div>
+    
+    <!-- NEW: Back to Top Button HTML -->
+    <button id="back-to-top" title="Go to top">↑</button>
 
-    <!-- JavaScript for Filtering Publications -->
+    <!-- JavaScript for All New Features -->
     <script>
-        function filterPublications(category) {
-            // Update button active state
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-                if (button.getAttribute('onclick') === `filterPublications('${category}')`) {
-                    button.classList.add('active');
-                }
-            });
-
-            const items = document.querySelectorAll('.publication-item');
-            const headers = document.querySelectorAll('.publication-category-header');
-            let visibleCategories = new Set();
-
-            // Filter items
-            items.forEach(item => {
-                const itemCategoryClass = Array.from(item.classList).find(cls => cls.startsWith('category-'));
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.classList.remove('hidden');
-                    if (itemCategoryClass) {
-                        visibleCategories.add(itemCategoryClass);
-                    }
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            // Show/hide headers
-            headers.forEach(header => {
-                const headerCategoryClass = Array.from(header.classList).find(cls => cls.startsWith('category-'));
-                if (category === 'all' || visibleCategories.has(headerCategoryClass)) {
-                    header.classList.remove('hidden');
-                } else {
-                    header.classList.add('hidden');
-                }
-            });
-        }
-
-        // Set the initial state to show all publications when the page loads.
         document.addEventListener('DOMContentLoaded', () => {
-            filterPublications('all');
+            
+            // ==================================================================
+            // Feature 1: Fade-in sections on scroll
+            // ==================================================================
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // ==================================================================
+            // Feature 2: Back to Top Button
+            // ==================================================================
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // ==================================================================
+            // Feature 3: Dark Mode Toggle
+            // ==================================================================
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = document.getElementById('theme-icon-sun');
+            const moonIcon = document.getElementById('theme-icon-moon');
+            const docElement = document.documentElement;
+
+            // Function to switch theme
+            const switchTheme = (theme) => {
+                if (theme === 'dark') {
+                    docElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                } else {
+                    docElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                }
+            };
+
+            // Check for saved theme in localStorage or user's OS preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme) {
+                switchTheme(savedTheme);
+            } else if (prefersDark) {
+                switchTheme('dark');
+            }
+
+            // Event listener for the toggle button
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = docElement.getAttribute('data-theme');
+                switchTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            });
         });
     </script>
 
