@@ -279,6 +279,15 @@
             margin-bottom: 0.25rem;
         }
 
+        .publication-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .publication-title a:hover {
+            color: var(--primary-color);
+        }
+
         .publication-authors {
             font-size: 0.9rem;
             margin-bottom: 0.25rem;
@@ -295,12 +304,7 @@
             font-weight: bold;
         }
 
-        .publication-links a {
-            margin-right: 1rem;
-            font-weight: 500;
-        }
-        
-        /* 
+        /*
         ==========================================================================
         Footer
         ==========================================================================
@@ -447,11 +451,9 @@
                 <p> 
                     I am a Ph.D. candidate at <a href="https://www.cuhk.edu.hk/chinese/index.html">The Chinese University of Hong Kong</a>, supervised by <a href="https://www.ee.cuhk.edu.hk/en-gb/people/academic-staff/professors/prof-yixuan-yuan">Prof. Yixuan Yuan</a>. I received my M.Eng from <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a> under <a href="https://scholar.google.com/citations?user=tmx7tu8AAAAJ&hl=zh-CN">Prof. Jie Yang</a> and <a href="https://automation.sjtu.edu.cn/yungu">Prof. Yun Gu</a>. I obtained my B.Eng. in <a href="https://automation.sjtu.edu.cn/">Automation</a> at <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.
                     <br><br>
-                    Previously, I was dedicated to advancing 3D/4D healthcare, including human body regions such as chest, abdomen, and oral cavity, as well as data modalities like CT, X-ray, and point clouds.
+                    My current research centers on visual code agents, including image webdev and vision-language agents for high-value, real-world scenarios. Previously, I focused on building unified multimodal models. My long-term research goal is to advance toward Artificial General Intelligence (AGI).
                     <br><br>
-                    My current research focuses on achieving Artificial General Intelligence (AGI) by developing integrated systems that leverage Multimodal Large Language Models for advanced visual understanding and generation.
-                    <br><br>
-                    <strong>New: I expect to graduate in 2027 and aspire to enter industry. If there are any suitable internship opportunities, please contact me via email.</strong>
+                    <strong>New: I expect to graduate in 2027 and aspire to enter industry. If there are any suitable full-time opportunities, please contact me！</strong>
                 </p>
             </div>
         </section>
@@ -464,6 +466,8 @@
             <div class="scrollable-list">
                 <ul>
                     <!-- TODO: Add your news items here. You can copy/paste the <li> tag. -->
+                    <li><strong>[06 2026]</strong>: One paper, SpecV, is accepted to ECCV 2026.</li>
+                    <li><strong>[11 2025]</strong>: Excited to start my internship at Qwen!</li>
                     <li><strong>[07 2025]</strong>: One paper, ToothMaker, is accepted to IEEE TMI.</li>
                     <li><strong>[06 2025]</strong>: Three papers, X<sup>2</sup>-Gaussian, GaussianReg, and InfoBridge, are accepted to ICCV 2025.</li>
                     <li><strong>[06 2025]</strong>: One paper, STEAM, is accepted to MICCAI 2025.</li>
@@ -494,16 +498,24 @@
             <div id="publications-list">
                 <!-- Publication -->
                 <div class="publication-item">
-                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/toothmaker.jpg" alt="Teaser for TNN paper">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/specv.jpg" alt="Teaser for SpecV paper">
                     <div class="publication-info">
-                        <div class="publication-title">ToothMaker: Realistic Panoramic Dental Radiograph Generation via Disentangled Control</div>
+                        <div class="publication-title"><a href="https://github.com/yuyouxixi/SpecV">SpecV: Specification Verification for Robust Unified Multimodal Evaluation</a></div>
+                        <div class="publication-authors"><strong>Weihao Yu</strong>, R Fang, Y Cai, L Huang, Y Yang, X Zhuang, J Lin, Y Yuan, S Bai</div>
+                        <div class="publication-venue">
+                            European Conference on Computer Vision (<strong>ECCV</strong>), 2026
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication -->
+                <div class="publication-item">
+                    <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/toothmaker.jpg" alt="Teaser for ToothMaker paper">
+                    <div class="publication-info">
+                        <div class="publication-title"><a href="#">ToothMaker: Realistic Panoramic Dental Radiograph Generation via Disentangled Control</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, X Guo, W Li, X Liu, H Chen, Y Yuan</div>
                         <div class="publication-venue">
                             IEEE Transactions on Medical Imaging (<strong>TMI</strong>), 2025
-                        </div>
-                        <div class="publication-links">
-                            <a href="#">Paper</a>
-                            <a href="#">Code</a>
                         </div>
                     </div>
                 </div>
@@ -512,15 +524,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/x2gaussian.jpg" alt="Teaser for X2-Gaussian paper">
                     <div class="publication-info">
-                        <div class="publication-title">X<sup>2</sup>-Gaussian: 4D Radiative Gaussian Splatting for Continuous-time Tomographic Reconstruction</div>
+                        <div class="publication-title"><a href="https://x2-gaussian.github.io/">X<sup>2</sup>-Gaussian: 4D Radiative Gaussian Splatting for Continuous-time Tomographic Reconstruction</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, Y Cai, R Zha, Z Fan, C Li, Y Yuan</div>
                         <div class="publication-venue">
                             International Conference on Computer Vision (<strong>ICCV</strong>), 2025
-                        </div>
-                        <div class="publication-links">
-                            <a href="https://arxiv.org/abs/2503.21779">Paper</a>
-                            <a href="https://x2-gaussian.github.io/">Project Page</a>
-                            <a href="https://github.com/yuyouxixi/x2-gaussian">Code</a>
                         </div>
                     </div>
                 </div>
@@ -529,15 +536,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/gaussianreg.jpg" alt="Teaser for GaussianReg paper">
                     <div class="publication-info">
-                        <div class="publication-title">GaussianReg: Rapid 2D/3D Registration for Emergency Surgery via Explicit 3D Modeling with Gaussian Primitives</div>
+                        <div class="publication-title"><a href="#">GaussianReg: Rapid 2D/3D Registration for Emergency Surgery via Explicit 3D Modeling with Gaussian Primitives</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, X Guo, X Liu, Y Liu, H Zheng, Y Huang, Y Yuan</div>
                         <div class="publication-venue">
                             International Conference on Computer Vision (<strong>ICCV</strong>), 2025
-                        </div>
-                        <div class="publication-links">
-                            <a href="#">Paper</a>
-                            <a href="#">Project Page</a>
-                            <a href="#">Code</a>
                         </div>
                     </div>
                 </div>
@@ -546,14 +548,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/geot.jpg" alt="Teaser for GeoT paper">
                     <div class="publication-info">
-                        <div class="publication-title">GeoT: Geometry-guided Instance-dependent Transition Matrix for Semi-supervised Tooth Point Cloud Segmentation</div>
+                        <div class="publication-title"><a href="https://arxiv.org/abs/2503.16976">GeoT: Geometry-guided Instance-dependent Transition Matrix for Semi-supervised Tooth Point Cloud Segmentation</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, X Guo, C Li, Y Liu, Y Yuan</div>
                         <div class="publication-venue">
                             Information Processing in Medical Imaging (<strong>IPMI</strong>), 2025
-                        </div>
-                        <div class="publication-links">
-                            <a href="https://arxiv.org/abs/2503.16976">Paper</a>
-                            <a href="https://github.com/CUHK-AIM-Group/GeoT">Code</a>
                         </div>
                     </div>
                 </div>
@@ -562,14 +560,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/airwayformer.jpg" alt="Teaser for AirwayFormer paper">
                     <div class="publication-info">
-                        <div class="publication-title">AirwayFormer: Structure-Aware Boundary-Adaptive Transformers for Airway Anatomical Labeling</div>
+                        <div class="publication-title"><a href="https://link.springer.com/chapter/10.1007/978-3-031-43990-2_37">AirwayFormer: Structure-Aware Boundary-Adaptive Transformers for Airway Anatomical Labeling</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, H Zheng, Y Gu, F Xie, J Sun, J Yang</div>
                         <div class="publication-venue">
                             International Conference on Medical Image Computing and Computer Assisted Intervention (<strong>MICCAI</strong>), 2023 <span class="publication-highlights">(early accept)</span>
-                        </div>
-                        <div class="publication-links">
-                            <a href="https://link.springer.com/chapter/10.1007/978-3-031-43990-2_37">Paper</a>
-                            <a href="#">Code</a>
                         </div>
                     </div>
                 </div>
@@ -578,14 +572,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/tnn.jpg" alt="Teaser for TNN paper">
                     <div class="publication-info">
-                        <div class="publication-title">TNN: Tree neural network for airway anatomical labeling</div>
+                        <div class="publication-title"><a href="https://ieeexplore.ieee.org/abstract/document/9878127">TNN: Tree neural network for airway anatomical labeling</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, H Zheng, Y Gu, F Xie, J Yang, J Sun, G Yang</div>
                         <div class="publication-venue">
                             IEEE Transactions on Medical Imaging (<strong>TMI</strong>), 2022
-                        </div>
-                        <div class="publication-links">
-                            <a href="https://ieeexplore.ieee.org/abstract/document/9878127">Paper</a>
-                            <a href="https://github.com/yuyouxixi/airway-labeling">Code</a>
                         </div>
                     </div>
                 </div>
@@ -594,14 +584,10 @@
                 <div class="publication-item">
                     <img class="publication-media" src="https://raw.githubusercontent.com/yuyouxixi/yuyouxixi.github.io/main/Homepage_files/break.jpg" alt="Teaser for Break paper">
                     <div class="publication-info">
-                        <div class="publication-title">Break: Bronchi reconstruction by geodesic transformation and skeleton embedding</div>
+                        <div class="publication-title"><a href="https://arxiv.org/pdf/2202.00002">Break: Bronchi reconstruction by geodesic transformation and skeleton embedding</a></div>
                         <div class="publication-authors"><strong>Weihao Yu</strong>, H Zheng, M Zhang, H Zhang, J Sun, J Yang</div>
                         <div class="publication-venue">
                             IEEE International Symposium on Biomedical Imaging (<strong>ISBI</strong>), 2022 <span class="publication-highlights">(best-paper-award nomination)</span>
-                        </div>
-                        <div class="publication-links">
-                            <a href="https://arxiv.org/pdf/2202.00002">Paper</a>
-                            <a href="#">Code</a>
                         </div>
                     </div>
                 </div>
@@ -615,9 +601,12 @@
             <h2>Experience</h2>
             <ul>
                 <!-- TODO: Add your experience here -->
-                <li><strong>BAAI Vision</strong> - Research Intern, 2023</li>
-                <li><strong>Tencent YouTu Lab</strong> - Research Intern, 2022</li>
-                <li><strong>Sensetime</strong> - Research Intern, 2020</li>
+                <li><strong>Qwen</strong> - Research Intern, Nov 2025 - Present<br>
+                Multimodal foundation models. Mentors: <a href="https://scholar.google.com/citations?user=ylhI1JsAAAAJ&hl=zh-CN">Shuai Bai</a> and <a href="https://rongyaofang.github.io/">Rongyao Fang</a>.</li>
+                <li><strong>BAAI Vision</strong> - Research Intern, Apr 2023 - Aug 2023<br>
+                Unified multimodal models. Mentor: <a href="https://scholar.google.com/citations?user=DPz0DjYAAAAJ&hl=zh-CN">Xinlong Wang</a>.</li>
+                <li><strong>Tencent YouTu Lab</strong> - Research Intern, Jan 2022 - May 2022<br>
+                Image retrieval. Mentor: <a href="https://scholar.google.com/citations?user=lFvf1KEAAAAJ&hl=en&oi=sra">Chao Chen</a>.</li>
             </ul>
         </section>
         
@@ -635,7 +624,7 @@
 
         <footer>
             <!-- TODO: Update the date -->
-            <p>Last updated on July, 2025</p>
+            <p>Last updated on June, 2026</p>
             <!-- NEW: Copyright Notice -->
             <p>&copy; <span id="copyright-year"></span> Weihao Yu. All Rights Reserved.</p>
         </footer>
